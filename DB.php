@@ -1,12 +1,5 @@
 <?php
-/*
- * DB Class
- * This class is used for database related (connect, get, insert, update, and delete) operations
- * with PHP Data Objects (PDO)
- * @author    CodexWorld.com
- * @url       http://www.codexworld.com
- * @license   http://www.codexworld.com/license
- */
+
 class DB {
     // Database credentials
     private $dbHost     = 'localhost';
@@ -14,11 +7,8 @@ class DB {
     private $dbPassword = '';
     private $dbName     = 'evvemi_task';
     public $db;
-    
-    /*
-     * Connect to the database and return db connecction
-     */
-    public function __construct(){
+
+	public function __construct(){
         if(!isset($this->db)){
             // Connect to the database
             try{
@@ -63,13 +53,7 @@ class DB {
             $columns = '';
             $values  = '';
             $i = 0;
-           /* if(!array_key_exists('created',$data)){
-                $data['created'] = date("Y-m-d H:i:s");
-            }
-            if(!array_key_exists('modified',$data)){
-                $data['modified'] = date("Y-m-d H:i:s");
-            }*/
-
+       
             $columnString = implode(',', array_keys($data));
             $valueString = ":".implode(',:', array_keys($data));
 			
@@ -122,9 +106,6 @@ class DB {
             $whereSql = '';
 			$whereSql1 = '';
             $i = 0;
-            /*if(!array_key_exists('modified',$data)){
-                $data['modified'] = date("Y-m-d H:i:s");
-            }*/
             foreach($data as $key=>$val){
                 $pre = ($i > 0)?', ':'';
                 $val = htmlspecialchars(strip_tags($val));
